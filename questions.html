@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matrix Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        .container {
+            width: 90%;
+            max-width: 800px;
+            margin: 20px auto;
+        }
+        .question-container {
+            margin-bottom: 20px;
+        }
+        .question {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+        .option {
+            display: block;
+            background: #fff;
+            border: 1px solid #ddd;
+            margin: 5px 0;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .option:hover {
+            background: #f0f0f0;
+        }
+        .option.correct {
+            background: #d4edda;
+            border-color: #c3e6cb;
+        }
+        .option.incorrect {
+            background: #f8d7da;
+            border-color: #f5c6cb;
+        }
+        #results {
+            display: none;
+            margin-top: 20px;
+        }
+        .feedback-success {
+            color: #28a745;
+        }
+        .feedback-warning {
+            color: #dc3545;
+        }
+        .timer {
+            font-size: 1em;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            background: #007bff;
+            color: #fff;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .feedback {
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="quiz">
+            <!-- Questions will be inserted here by JavaScript -->
+        </div>
+        <button id="submit">Submit Answers</button>
+        <div id="results">
+            <h2>Quiz Results</h2>
+            <p id="feedback"></p>
+            <p>Your score: <span id="score"></span> out of 30</p>
+            <button id="retry">Try Again</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const questions = [
+                { question: 'What is the order of the matrix?', options: ['2x3', '3x2', '2x2', '3x3'], answer: '2x3' },
+                // Add 29 more questions here...
+                { question: 'What does a zero matrix look like?', options: ['Matrix with all zeros', 'Matrix with all ones', 'Identity matrix', 'Diagonal matrix'], answer: 'Matrix with all zeros' },
+                // Make sure to replace this example with actual questions and options
+            ];
+
+            const quizContainer = document.getElementById('quiz');
+            const submitButton = document.getElementById('submit');
+            const resultsDiv = document.getElementById('results');
+            const feedbackElement = document.getElementById('feedback');
+            const scoreElement = document.getElementById('score');
+            const retryButton = document.getElementById('retry');
+
+            let currentQuestionIndex = 0;
+            let score = 0;
+            let timers = [];
+
+            function loadQuestion(index) {
+                const question = questions[index];
+                const questionContainer = document.createElement('div');
+                questionContainer.className = 'question-container';
+                questionContainer.innerHTML = `
+                    <div class="question">${question.question}</div>
+                    <div class="timer" id="timer-${index}">Time left: 30s</div>
+                    ${question.options.map((option, i) => `
+                        <div class="option" data-index="${index}" data-option="${i}">${option}</div>
+                    `).join('')}
+                `;
+                quizContainer.appendChild(questionContainer);
+
+                startTimer(index);
+            }
+
+            function startTimer(index) {
+                let timeLeft = 30;
+                const timerElement = document.getElementById(`timer-${index}`);
+                const timer = setInterval(() => {
+                    timeLeft--;
+                    timerElement.textContent = `Time left: ${timeLeft}s`;
+                    if (timeLeft <= 0) {
+                        clearInterval(timer);
+                        disableOptions(index);
+                    }
+                }, 1000);
+                timers[index] = timer;
+            }
+
+            function disableOptions(index) {
+                document.querySelectorAll(`.question-container:nth-of-type(${index + 1}) .option`).forEach(option => {
+                    option.style.pointerEvents = 'none';
+                });
+            }
+
+            function showResults() {
+                document.querySelectorAll('.option').forEach(option => {
+                    const questionIndex = option.dataset.index;
+                    const selectedOption = option.dataset.option;
+                    if (questions[questionIndex].answer === option.textContent) {
+                        option.classList.add('correct');
+                    } else {
+                        option.classList.add('incorrect');
+                    }
+                });
+                resultsDiv.style.display = 'block';
+                scoreElement.textContent = score;
+                feedbackElement.textContent = score >= 24 ? 'Excellent work! 🌟' :
+                    score >= 18 ? 'Good job! 👍' : 'Keep practicing! 💪';
+            }
+
+            submitButton.addEventListener('click', () => {
+                let allAnswered = true;
+                document.querySelectorAll('.question-container').forEach((container, index) => {
+                    const selectedOption = container.querySelector('.option.selected');
+                    if (!selectedOption) {
+                        allAnswered = false;
+                        return;
+                    }
+                    if (selectedOption.textContent === questions[index].answer) {
+                        score++;
+                    }
+                });
+
+                if (allAnswered) {
+                    showResults();
+                } else {
+                    feedbackElement.textContent = 'Please answer all questions.';
+                    feedbackElement.classList.add('feedback-warning');
+                }
+            });
+
+            retryButton.addEventListener('click', () => {
+                location.reload();
+            });
+
+            quizContainer.addEventListener('click', (e) => {
+                if (e.target.classList.contains('option')) {
+                    e.target.classList.toggle('selected');
+                }
+            });
+
+            // Load the first 3 questions for now
+            for (let i = 0; i < Math.min(questions.length, 3); i++) {
+                loadQuestion(i);
+            }
+        });
+    </script>
+</body>
+</html>

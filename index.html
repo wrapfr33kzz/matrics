@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matrices Guide for Mahi</title>
+    <style>
+        /* Base styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        header, footer {
+            background-color: #004d40;
+            color: #fff;
+            text-align: center;
+            padding: 15px 0;
+        }
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+        footer {
+            margin-top: 20px;
+        }
+        main {
+            margin-top: 80px;
+            padding: 20px;
+        }
+        section {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+            animation: fadeIn 1s ease-in-out;
+        }
+        h1, h2, h3 {
+            margin: 0;
+            padding-bottom: 10px;
+        }
+        h1 {
+            font-size: 2.5em;
+            color: #004d40;
+        }
+        h2 {
+            font-size: 1.8em;
+            color: #00796b;
+        }
+        h3 {
+            font-size: 1.4em;
+            color: #004d40;
+        }
+        .matrix-svg, .graph-svg {
+            margin: 0 auto;
+            display: block;
+        }
+        .matrix-svg text, .graph-svg text {
+            font-family: Arial, sans-serif;
+            font-size: 18px;
+        }
+        .practice-list {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+        .practice-list li {
+            margin-bottom: 10px;
+        }
+        .text-center {
+            text-align: center;
+        }
+        .icon {
+            margin-right: 5px;
+        }
+        .emoji {
+            font-size: 1.5em;
+        }
+        .graph-container {
+            display: flex;
+            justify-content: center;
+        }
+        .graph-svg {
+            max-width: 100%;
+        }
+        .nav-button {
+            display: block;
+            width: 200px;
+            margin: 30px auto;
+            padding: 15px;
+            text-align: center;
+            background-color: #00796b;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .nav-button:hover {
+            background-color: #004d40;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            main {
+                padding: 10px;
+            }
+            section {
+                padding: 10px;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.4em;
+            }
+            h3 {
+                font-size: 1.2em;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>📚 Matrices Guide for Mahi</h1>
+    </header>
+
+    <!-- Main content -->
+    <main>
+        <!-- What is a Matrix? -->
+        <section>
+            <h2>🔢 What is a Matrix?</h2>
+            <p>A <strong>matrix</strong> is a rectangular array of numbers arranged in rows and columns. Here's a basic example:</p>
+            <svg class="matrix-svg" width="180" height="100">
+                <text x="10" y="20">[ 1  2  3 ]</text>
+                <text x="10" y="50">[ 4  5  6 ]</text>
+            </svg>
+            <p>This matrix has 2 rows and 3 columns.</p>
+        </section>
+
+        <!-- Types of Matrices -->
+        <section>
+            <h2>📊 Types of Matrices</h2>
+
+            <!-- Row Matrix -->
+            <div>
+                <h3>1. Row Matrix</h3>
+                <p>A matrix with only <strong>one row</strong>.</p>
+                <svg class="matrix-svg" width="180" height="50">
+                    <text x="10" y="30">[ 1  2  3 ]</text>
+                </svg>
+            </div>
+
+            <!-- Column Matrix -->
+            <div>
+                <h3>2. Column Matrix</h3>
+                <p>A matrix with only <strong>one column</strong>.</p>
+                <svg class="matrix-svg" width="50" height="130">
+                    <text x="10" y="20">1</text>
+                    <text x="10" y="50">2</text>
+                    <text x="10" y="80">3</text>
+                </svg>
+            </div>
+
+            <!-- Square Matrix -->
+            <div>
+                <h3>3. Square Matrix</h3>
+                <p>A matrix with the <strong>same number of rows and columns</strong>.</p>
+                <svg class="matrix-svg" width="130" height="130">
+                    <text x="10" y="20">[ 1  2 ]</text>
+                    <text x="10" y="50">[ 3  4 ]</text>
+                </svg>
+            </div>
+        </section>
+
+        <!-- Matrix Operations -->
+        <section>
+            <h2>🔢 Matrix Operations</h2>
+
+            <!-- Matrix Addition -->
+            <div>
+                <h3>1. Matrix Addition</h3>
+                <p>Add two matrices by adding corresponding elements:</p>
+                <svg class="matrix-svg" width="250" height="120">
+                    <text x="10" y="20">[ 1  2 ] + [ 5  6 ]</text>
+                    <text x="10" y="50">[ 3  4 ]   [ 7  8 ]</text>
+                    <text x="70" y="80">= [ 6  8 ]</text>
+                    <text x="150" y="110">[ 10  12 ]</text>
+                </svg>
+            </div>
+
+            <!-- Matrix Subtraction -->
+            <div>
+                <h3>2. Matrix Subtraction</h3>
+                <p>Subtract two matrices by subtracting corresponding elements:</p>
+                <svg class="matrix-svg" width="250" height="120">
+                    <text x="10" y="20">[ 5  6 ] - [ 2  3 ]</text>
+                    <text x="10" y="50">[ 7  8 ]   [ 1  2 ]</text>
+                    <text x="70" y="80">= [ 3  3 ]</text>
+                    <text x="150" y="110">[ 6  6 ]</text>
+                </svg>
+            </div>
+
+            <!-- Scalar Multiplication -->
+            <div>
+                <h3>3. Scalar Multiplication</h3>
+                <p>Multiply every element of the matrix by a number:</p>
+                <svg class="matrix-svg" width="250" height="120">
+                    <text x="10" y="20">3 x [ 1  2 ]</text>
+                    <text x="10" y="50">    [ 3  4 ]</text>
+                    <text x="70" y="80">= [ 3  6 ]</text>
+                    <text x="150" y="110">[ 9  12 ]</text>
+                </svg>
+            </div>
+
+            <!-- Matrix Multiplication -->
+            <div>
+                <h3>4. Matrix Multiplication</h3>
+                <p>Multiply matrices by multiplying rows of the first matrix by columns of the second matrix:</p>
+                <svg class="graph-container">
+                    <svg class="graph-svg" width="300" height="150">
+                        <text x="10" y="20">[ 1  2 ] x [ 3  4 ]</text>
+                        <text x="10" y="50">[ 5  6 ]   [ 7  8 ]</text>
+                        <text x="70" y="80">= [ 19  22 ]</text>
+                        <text x="160" y="110">[ 43  50 ]</text>
+                        <line x1="10" y1="40" x2="60" y2="40" stroke="#00796b" stroke-width="2"/>
+                        <line x1="10" y1="70" x2="60" y2="70" stroke="#00796b" stroke-width="2"/>
+                        <circle cx="50" cy="40" r="4" fill="#00796b" />
+                        <circle cx="50" cy="70" r="4" fill="#00796b" />
+                    </svg>
+                </svg>
+            </div>
+        </section>
+
+        <!-- Practice Problems -->
+        <section>
+            <h2>📝 Practice Problems</h2>
+            <p>Try solving these problems to test your understanding:</p>
+            <ul class="practice-list">
+                <li>Solve the matrix addition problem: [ 2  3 ] + [ 4  5 ]</li>
+                <li>Perform matrix subtraction: [ 6  7 ] - [ 2  1 ]</li>
+                <li>Calculate the scalar multiplication: 4 x [ 1  2 ]</li>
+                <li>Multiply the matrices: [ 1  2 ] x [ 3  4 ]</li>
+            </ul>
+        </section>
+
+        <!-- Navigation Button -->
+        <div class="text-center">
+            <a href="graphs.html" class="nav-button">Go to Next Page →</a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>Created with ❤️ for Mahi. All rights reserved. © 2024</p>
+    </footer>
+
+    <!-- JavaScript for animations -->
+    <script>
+        // Example of adding simple animations or interactions
+        document.addEventListener('DOMContentLoaded', function () {
+            const sections = document.querySelectorAll('section');
+            sections.forEach((section, index) => {
+                section.style.animationDelay = `${index * 0.5}s`;
+            });
+        });
+    </script>
+</body>
+</html>

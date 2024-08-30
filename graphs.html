@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graphs Guide</title>
+    <style>
+        /* Base styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f4f8;
+            color: #333;
+        }
+        header, footer {
+            background-color: #003366;
+            color: #fff;
+            text-align: center;
+            padding: 15px 0;
+        }
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+        footer {
+            margin-top: 20px;
+        }
+        main {
+            margin-top: 80px;
+            padding: 20px;
+        }
+        section {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+            animation: fadeIn 1s ease-in-out;
+        }
+        h1, h2 {
+            margin: 0;
+            padding-bottom: 10px;
+        }
+        h1 {
+            font-size: 2.5em;
+            color: #003366;
+        }
+        h2 {
+            font-size: 1.8em;
+            color: #00509e;
+        }
+        .graph-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .graph {
+            max-width: 100%;
+        }
+        .text-center {
+            text-align: center;
+        }
+        .nav-button {
+            display: block;
+            width: 200px;
+            margin: 30px auto;
+            padding: 15px;
+            text-align: center;
+            background-color: #00509e;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .nav-button:hover {
+            background-color: #003366;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            main {
+                padding: 10px;
+            }
+            section {
+                padding: 10px;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.4em;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>📊 Understanding Graphs</h1>
+    </header>
+
+    <!-- Main content -->
+    <main>
+        <!-- Line Graph -->
+        <section>
+            <h2>📈 Line Graph</h2>
+            <p>A line graph shows changes over time. Each point on the graph represents a value at a specific time, and lines connect these points to show trends.</p>
+            <div class="graph-container">
+                <svg class="graph" width="600" height="400">
+                    <line x1="50" y1="350" x2="550" y2="350" stroke="#00509e" stroke-width="2" />
+                    <line x1="50" y1="350" x2="100" y2="300" stroke="#00509e" stroke-width="2" />
+                    <line x1="100" y1="300" x2="150" y2="250" stroke="#00509e" stroke-width="2" />
+                    <line x1="150" y1="250" x2="200" y2="200" stroke="#00509e" stroke-width="2" />
+                    <line x1="200" y1="200" x2="250" y2="150" stroke="#00509e" stroke-width="2" />
+                    <line x1="250" y1="150" x2="300" y2="200" stroke="#00509e" stroke-width="2" />
+                    <line x1="300" y1="200" x2="350" y2="100" stroke="#00509e" stroke-width="2" />
+                    <line x1="350" y1="100" x2="400" y2="150" stroke="#00509e" stroke-width="2" />
+                    <line x1="400" y1="150" x2="450" y2="50" stroke="#00509e" stroke-width="2" />
+                    <line x1="450" y1="50" x2="500" y2="100" stroke="#00509e" stroke-width="2" />
+                    <line x1="500" y1="100" x2="550" y2="50" stroke="#00509e" stroke-width="2" />
+                    <!-- Add labels -->
+                    <text x="50" y="370">0</text>
+                    <text x="100" y="370">1</text>
+                    <text x="150" y="370">2</text>
+                    <text x="200" y="370">3</text>
+                    <text x="250" y="370">4</text>
+                    <text x="300" y="370">5</text>
+                    <text x="350" y="370">6</text>
+                    <text x="400" y="370">7</text>
+                    <text x="450" y="370">8</text>
+                    <text x="500" y="370">9</text>
+                    <text x="550" y="370">10</text>
+                </svg>
+            </div>
+        </section>
+
+        <!-- Bar Chart -->
+        <section>
+            <h2>📊 Bar Chart</h2>
+            <p>A bar chart compares different categories. Each bar represents a category's value, making it easy to see which categories are larger or smaller.</p>
+            <div class="graph-container">
+                <svg class="graph" width="600" height="400">
+                    <rect x="50" y="200" width="80" height="150" fill="#00796b" />
+                    <rect x="150" y="150" width="80" height="200" fill="#00796b" />
+                    <rect x="250" y="100" width="80" height="250" fill="#00796b" />
+                    <rect x="350" y="50" width="80" height="300" fill="#00796b" />
+                    <rect x="450" y="150" width="80" height="200" fill="#00796b" />
+                    <!-- Add labels -->
+                    <text x="50" y="370">A</text>
+                    <text x="150" y="370">B</text>
+                    <text x="250" y="370">C</text>
+                    <text x="350" y="370">D</text>
+                    <text x="450" y="370">E</text>
+                </svg>
+            </div>
+        </section>
+
+        <!-- Pie Chart -->
+        <section>
+            <h2>🥧 Pie Chart</h2>
+            <p>A pie chart shows proportions. Each slice represents a part of the whole, helping to visualize percentage-based data.</p>
+            <div class="graph-container">
+                <svg class="graph" width="400" height="400" viewBox="0 0 400 400">
+                    <!-- Pie chart slices -->
+                    <circle r="150" cx="200" cy="200" fill="#00796b" stroke="#fff" stroke-width="2" stroke-dasharray="60 40" stroke-dashoffset="0" />
+                    <circle r="150" cx="200" cy="200" fill="#00796b" stroke="#fff" stroke-width="2" stroke-dasharray="90 10" stroke-dashoffset="-100" />
+                    <circle r="150" cx="200" cy="200" fill="#00796b" stroke="#fff" stroke-width="2" stroke-dasharray="100 0" stroke-dashoffset="-190" />
+                    <!-- Add labels -->
+                    <text x="200" y="100" text-anchor="middle" font-size="20" fill="#fff">A</text>
+                    <text x="200" y="250" text-anchor="middle" font-size="20" fill="#fff">B</text>
+                    <text x="200" y="200" text-anchor="middle" font-size="20" fill="#fff">C</text>
+                </svg>
+            </div>
+        </section>
+
+        <!-- Scatter Plot -->
+        <section>
+            <h2>🔵 Scatter Plot</h2>
+            <p>A scatter plot shows individual data points. It is useful for observing relationships between two variables.</p>
+            <div class="graph-container">
+                <svg class="graph" width="600" height="400">
+                    <!-- Scatter plot points -->
+                    <circle cx="100" cy="200" r="5" fill="#ff5722" />
+                    <circle cx="150" cy="150" r="5" fill="#ff5722" />
+                    <circle cx="200" cy="100" r="5" fill="#ff5722" />
+                    <circle cx="250" cy="150" r="5" fill="#ff5722" />
+                    <circle cx="300" cy="200" r="5" fill="#ff5722" />
+                    <circle cx="350" cy="250" r="5" fill="#ff5722" />
+                    <circle cx="400" cy="300" r="5" fill="#ff5722" />
+                    <circle cx="450" cy="350" r="5" fill="#ff5722" />
+                    <!-- Add labels -->
+                    <text x="100" y="370">1</text>
+                    <text x="150" y="370">2</text>
+                    <text x="200" y="370">3</text>
+                    <text x="250" y="370">4</text>
+                    <text x="300" y="370">5</text>
+                    <text x="350" y="370">6</text>
+                    <text x="400" y="370">7</text>
+                    <text x="450" y="370">8</text>
+                </svg>
+            </div>
+        </section>
+
+        <!-- Navigation Button -->
+        <div class="text-center">
+            <a href="next-pagegraphs.html" class="nav-button">Go to Next Page →</a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>Created with ❤️ for Mahi. All rights reserved. © 2024</p>
+    </footer>
+
+    <!-- JavaScript for animations -->
+    <script>
+        // Example of adding simple animations or interactions
+        document.addEventListener('DOMContentLoaded', function () {
+            const graphs = document.querySelectorAll('.graph');
+            graphs.forEach((graph, index) => {
+                graph.style.animationDelay = `${index * 0.5}s`;
+            });
+        });
+    </script>
+</body>
+</html>
